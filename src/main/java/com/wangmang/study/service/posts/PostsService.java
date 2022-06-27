@@ -39,7 +39,6 @@ public class PostsService {
     //전체 조회
     @Transactional(readOnly = true)
     public List<PostsResponseDto> findAll(){
-//        List<PostsResponseDto> postList = new ArrayList<>();
         List<Posts> all = postsRepository.findAllDesc();
         List<PostsResponseDto> postsList =
                 all.stream().map((post) -> new PostsResponseDto(post)).collect(Collectors.toList());
@@ -52,6 +51,7 @@ public class PostsService {
                 new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
         return new PostsResponseDto(posts);
     }
+
     //게시물 삭제
     public void delete(Long id){
         Posts posts = postsRepository.findById(id)
