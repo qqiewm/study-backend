@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="postList">
+    <div class="container">
+        <div class="loginBox">
+            <a class="writePostButton" th:href="@{/posts/save}">글 등록</a>
+            <div class="loginBox" th:if="${session.user != null}">
+                <a th:href="@{/logout}" class="writePostButton">로그아웃</a>
+            </div>
+        <div th:if="${session.user == null}">
+            <a class="writePostButton" th:href="@{/oauth2/authorization/google}">Google Login</a>
+        </div>
+        </div>
+        <div class="loginBox" th:if="${session.user != null}">
+        <span th:text="${userName}"></span><span>님 안녕</span>
+        </div>
+        <div class="postListContainer">
+            <div class="postInfoTitle">
+                <div class="textBox">번호</div>
+                <div class="textBox">제목</div>
+                <div class="textBox">작성자</div>
+                <div class="textBox">최종수정일</div>
+            </div>
+            <th:block th:each="post : ${postList}">
+            <div class="onePostInfoBox">
+                <div class="textBox"  th:text="${post.id}"></div>
+                <a class="titleBox" th:href="@{/posts/{id}(id = ${post.id})}" th:text="${post.title}">
+                </a>
+                <div class="textBox" th:text="${post.author}"></div>
+                <div class="textBox" th:text="${#temporals.format(post.modifedDate, 'yyyy-MM-dd HH:mm:ss')}"></div>
+                <script type="text/javascript" th:src="@{/js/posts/postList.js}"></script>
+            </div>
+            </th:block>
+            </div>
+    </div>
+</th:block>
+</html>

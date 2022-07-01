@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="postContent">
+    <div class="container">
+        <div class="pageTitle">상세내용</div>
+        <div class="contentContainer">
+            <div class="contentLabel">글 번호</div>
+            <input class="contentInput" name="id"  th:value="${post.id}" disabled />
+
+            <div class="contentLabel">제목</div>
+            <input class="contentInput"
+                   th:value="${post.title}"
+                    disabled
+            />
+
+            <div class="contentLabel">작성자</div>
+            <input class="contentInput" th:value="${post.author}" disabled />
+
+            <div class="contentLabel">내용</div>
+            <textarea class="contentTextarea"
+                      th:text="${post.content}"
+                    disabled
+            ></textarea>
+        </div>
+        <div class="buttonContainer">
+            <a class="editButton"
+               th:href="@{/posts/edit/{id}(id=${post.id})}"
+            >
+            수정
+            </a>
+
+            <a class="prevButton" th:href="@{/}"
+            >
+            이전
+            </a>
+            <button class="deleteButton">
+            삭제
+            </button>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/js/posts/postContent.js}"></script>
+</th:block>
+</html>

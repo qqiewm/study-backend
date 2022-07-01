@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!--공통 헤드-->
+<head>
+    <th:block th:replace="/fragments/headFragment :: headFragment"></th:block>
+</head>
+<body>
+<!--본문 상단 헤더-->
+
+<!--본문 내용-->
+<th:block layout:fragment="content"></th:block>
+
+<!--공통 스크립트-->
+<!--<th:block th:replace="/fragments/script :: scriptFragment">-->
+
+<!--</th:block>-->
+
+
+</body>
+
+</html>

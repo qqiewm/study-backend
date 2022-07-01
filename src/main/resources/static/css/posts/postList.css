@@ -1,0 +1,61 @@
+.container {
+      display: flex;
+      flex-direction: column;
+      padding: 40px;
+}
+
+.postListContainer {
+      display: flex;
+      flex-direction: column;
+}
+.loginBox {
+    display:flex;
+    flex-direction: row;
+}
+
+.writePostButton {
+        display:flex;
+      color: white;
+      background-color: skyblue;
+      border-radius: 8px;
+      padding: 12px;
+      border: none;
+}
+
+
+.postInfoTitle {
+      display: flex;
+      flex-direction: row;
+      margin-top: 16px;
+      width: 800px;
+      justify-content: space-between;
+      background-color: rgb(111, 207, 73, 0.5);
+}
+
+.textBox {
+      width: 25%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+}
+
+.onePostInfoBox {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 800px;
+      border-top: 1px solid rgba(0, 0, 0, 0.5);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.titleBox {
+      width: 25%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+}
+
+.titleBox:hover {
+        text-decoration: underline;
+        cursor: pointer;
+}
