@@ -27,13 +27,11 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/", "/css/**", "/image/**", "/js/**").permitAll()
                 .antMatchers("/api/v1/**")
-//                .permitAll()
                 .hasRole(Role.USER.name())
                 .anyRequest().authenticated()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
-//                .invalidateHttpSession(true)
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
@@ -42,23 +40,5 @@ public class SecurityConfig {
         return http.build();
     }
 }
-//    @Bean
-//    protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/", "/css/**", "/image/**", "/js/**").permitAll()
-//                .antMatchers("/api/v1/**")
-////                .permitAll()
-//                .hasRole(Role.USER.name())
-//                .anyRequest().authenticated()
-//                .and()
-//                .logout()
-//                .logoutSuccessUrl("/")
-//                .and()
-//                .oauth2Login()
-//                .userInfoEndpoint()
-//                .userService(customOAuth2UserService);
-//
-//        return http.build();
-//    }
+
 
