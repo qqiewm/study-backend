@@ -5,6 +5,7 @@ import com.wangmang.study.configuration.auth.dto.SessionUser;
 import com.wangmang.study.domain.user.User;
 import com.wangmang.study.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -19,6 +20,7 @@ import java.util.Collections;
 
 @RequiredArgsConstructor
 @Service
+@Log4j2
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final UserRepository userRepository;
@@ -40,7 +42,8 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registId, userNameAttributeName, oAuth2User.getAttributes());
 
-
+        log.info("getEmail ={}",attributes.getEmail());
+        log.info("getProfile ={}",attributes.getPicture());
         User user = saveOrUpdate(attributes);
 
         httpSession.setAttribute("user", new SessionUser(user));
@@ -53,6 +56,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     private User saveOrUpdate (OAuthAttributes attributes){
+        log.debug("getPicture() = {}",attributes.getEmail());
         User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes
                         .getName(), attributes.getPicture()))

@@ -10,6 +10,9 @@
         <div th:if="${session.user == null}">
             <a class="writePostButton" th:href="@{/oauth2/authorization/google}">Google Login</a>
         </div>
+            <div th:if="${session.user == null}">
+                <a class="writePostButton" th:href="@{/oauth2/authorization/naver}">Naver Login</a>
+            </div>
         </div>
         <div class="loginBox" th:if="${session.user != null}">
         <span th:text="${userName}"></span><span>님 안녕</span>
