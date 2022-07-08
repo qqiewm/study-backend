@@ -3,7 +3,7 @@ package com.wangmang.study.controller;
 import com.wangmang.study.dto.posts.PostsResponseDto;
 import com.wangmang.study.dto.posts.PostsSaveRequestDto;
 import com.wangmang.study.dto.posts.PostsUpdateRequestDto;
-import com.wangmang.study.service.posts.PostsService;
+import com.wangmang.study.service.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

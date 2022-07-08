@@ -1,4 +1,4 @@
-package com.wangmang.study.service.posts;
+package com.wangmang.study.service;
 
 import com.wangmang.study.domain.posts.Posts;
 import com.wangmang.study.domain.posts.PostsRepository;

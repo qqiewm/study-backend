@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/example?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/study?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: root
   jpa:
@@ -13,5 +13,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+auth:
+  jwtSecret: jwtSecretKey
+  jwtExpirationMs: 28800000
 
 

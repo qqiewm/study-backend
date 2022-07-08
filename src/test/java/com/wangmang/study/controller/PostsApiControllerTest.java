@@ -4,7 +4,7 @@ import com.wangmang.study.domain.posts.Posts;
 import com.wangmang.study.domain.posts.PostsRepository;
 import com.wangmang.study.dto.posts.PostsSaveRequestDto;
 import com.wangmang.study.dto.posts.PostsUpdateRequestDto;
-import com.wangmang.study.service.posts.PostsService;
+import com.wangmang.study.service.PostsService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
