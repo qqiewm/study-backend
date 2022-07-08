@@ -38,7 +38,7 @@ public class UserController {
         // 토큰 생성 및 응답
         String token = jwtTokenProvider.createToken(member.getEmail(), member.getRoles());
         response.setHeader("authorization", "bearer " + token);
-        return token;
+        return "bearer " + token;
 
     }
 }
