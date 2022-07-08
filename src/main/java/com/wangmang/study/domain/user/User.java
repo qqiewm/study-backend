@@ -7,47 +7,33 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+@Entity
 @Getter
 @NoArgsConstructor
-@Entity
-@Builder
 @AllArgsConstructor
-public class User extends BaseEntity {
+@Builder
+public class User {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idx;
+    private Long id;
 
-    @Column(nullable = false)
-    private String username;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String email;
 
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_idx"),
-            inverseJoinColumns = @JoinColumn(name = "role_idx"))
-    private Set<Role> roles = new HashSet<>();
-
-
-    @Builder
-    public User(String username, String email, String password){
-        this.username = username;
-        this.email = email;
-        this.password = password;
-
-    }
-
-
-
-
-
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Builder.Default
+    private List<String> roles = new ArrayList<>();
 }
