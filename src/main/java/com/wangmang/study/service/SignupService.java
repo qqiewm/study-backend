@@ -28,8 +28,6 @@ public class SignupService {
     @Qualifier("passwordEncoder")
     private final PasswordEncoder encoder;
 
-    @Value("${auth.jwtSecret}")
-    private String jwtSecret;
 
     @Transactional
     public Long save(SignupRequestDTO signupRequestDTO) {

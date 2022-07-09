@@ -19,21 +19,26 @@ public class JwtUtils {
     @Value("${auth.jwtExpirationMs}")
     private int jwtExpirationMs;
 
+    //jwt토큰 발급
     public String generateJwtToken(Authentication authentication){
-         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-
+        //로그인한 사용자 정보
+         UserDetailsImpl user = (UserDetailsImpl) authentication.getPrincipal();
+         log.info("user = {}", user.getUsername(), user.getPassword());
          return Jwts.builder()
-                 .setSubject((userPrincipal.getUsername()))
+                 .setSubject((user.getUsername()))
                  .setIssuedAt(new Date())
                  .setExpiration(new Date(new Date().getTime() + jwtExpirationMs))
+                 //signing 알고리즘, singning key
                  .signWith(SignatureAlgorithm.HS512, jwtSecret)
                  .compact();
     }
 
+    //발급된 token으로 username을 얻음
     public String getUserNameFromJwtToken(String token){
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJwt(token).getBody().getSubject();
     }
 
+    //유효한 토큰인지 검증
     public boolean validateJwtToken(String authToken){
         try{
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJwt(authToken);

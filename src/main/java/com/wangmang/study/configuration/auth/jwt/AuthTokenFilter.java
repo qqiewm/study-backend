@@ -27,18 +27,24 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     private UserDetailsServiceImpl userDetailsService;
 
 
-    @Override
+    //request, response filter 처리
+   @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
+                //요청에서 token만을 파싱
                 String jwt = parseJwt(request);
+                //유효한 토큰인지 검증
                 if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
+                    //토큰을 통해 username을 얻음
                     String username = jwtUtils.getUserNameFromJwtToken(jwt);
-
+                    //얻은 username으로 사용자 정보 얻음
                     UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
                     UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities()
                     );
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }
 

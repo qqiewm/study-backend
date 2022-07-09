@@ -11,6 +11,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
+//로그인시 받을 response
 public class JwtResponseDTO {
     private String token;
     private String type = "Bearer";

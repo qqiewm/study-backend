@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Builder
 public class UserDetailsImpl implements UserDetails {
+    //userDetails -> 스프링에서 제공해주는 유저 인터페이스
     private Long idx;
     private String email;
     private String username;
@@ -23,6 +24,7 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public static UserDetailsImpl build(User user) {
+
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
