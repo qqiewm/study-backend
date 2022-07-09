@@ -13,6 +13,7 @@ import java.util.Date;
 @Component
 @Log4j2
 public class JwtUtils {
+
     @Value("${auth.jwtSecret}")
     private String jwtSecret;
 

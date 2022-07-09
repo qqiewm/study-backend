@@ -8,6 +8,7 @@ import java.util.Set;
 public class SignupRequestDTO {
 
     private String username;
+    private String email;
     private String password;
 
 }

@@ -21,6 +21,7 @@ public class UserDetailsImpl implements UserDetails {
     private String email;
     private String username;
     private String picture;
+
     private Collection<? extends GrantedAuthority> authorities;
 
     public static UserDetailsImpl build(User user) {
