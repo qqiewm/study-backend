@@ -47,13 +47,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                     //security 컨텍스트에 사용자 인증정보 저장
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
                 }
-
             } catch (Exception e) {
                 log.error("Cannot set user authentication: {}", e);
             }
-
             filterChain.doFilter(request, response);
-
         }
 
 
