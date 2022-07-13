@@ -18,8 +18,9 @@ import java.util.stream.Collectors;
 public class UserDetailsImpl implements UserDetails {
     //userDetails -> 스프링에서 제공해주는 유저 인터페이스
     private Long idx;
-    private String email;
     private String username;
+    private String password;
+    private String email;
     private String picture;
 
     private Collection<? extends GrantedAuthority> authorities;
@@ -34,6 +35,7 @@ public class UserDetailsImpl implements UserDetails {
                 .idx(user.getIdx())
                 .email(user.getEmail())
                 .username(user.getUsername())
+                .password(user.getPassword())
                 .authorities(authorities)
                 .build();
     }
@@ -44,31 +46,31 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
