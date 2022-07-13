@@ -36,13 +36,13 @@ public class JwtUtils {
 
     //발급된 token으로 username을 얻음
     public String getUserNameFromJwtToken(String token){
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJwt(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
 
     //유효한 토큰인지 검증
     public boolean validateJwtToken(String authToken){
         try{
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJwt(authToken);
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
         }  catch (Exception e){
             log.error(e);
