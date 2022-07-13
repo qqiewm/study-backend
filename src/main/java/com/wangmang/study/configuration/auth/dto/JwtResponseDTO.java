@@ -15,7 +15,7 @@ import java.util.List;
 //로그인시 받을 response
 public class JwtResponseDTO {
     private String token;
-    private String type = "Bearer";
+    private String tokenType;
     private Long idx;
     private String email;
     private String username;

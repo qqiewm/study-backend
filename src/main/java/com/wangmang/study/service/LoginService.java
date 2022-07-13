@@ -37,11 +37,17 @@ public class LoginService {
         log.info("jwt token === {}", jwt);
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(item -> item.getAuthority())
+                .collect(Collectors.toList());
+
         JwtResponseDTO jwtDto = JwtResponseDTO.builder()
                 .token(jwt)
+                .tokenType("Bearer")
                 .idx(userDetails.getIdx())
                 .username(userDetails.getUsername())
                 .email(userDetails.getEmail())
+                .roles(roles)
                 .build();
 
 
