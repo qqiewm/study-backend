@@ -29,7 +29,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public JwtResponseDTO login(@RequestBody LoginRequestDTO requestDTO) {
-        log.debug("requestDTO : {} " , requestDTO);
+        log.info("requestDTO : {} " , requestDTO);
         return loginService.login(requestDTO);
     }
 
