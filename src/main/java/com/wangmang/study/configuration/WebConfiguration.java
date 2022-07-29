@@ -9,6 +9,6 @@ public class WebConfiguration {
 
 
     public void corsConfig(CorsRegistry registry){
-        registry.addMapping("/**").allowedOrigins("http://localhost:3000").allowedMethods("*");
+        registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
     }
 }
