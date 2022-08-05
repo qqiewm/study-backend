@@ -13,8 +13,26 @@ cache:
     - '$HOME/.gradle'
 script: "./gradlew clean build"
 
-# CI 실행 완료시 메일로 알람
+
+
+before_deploy:
+  - zip -r wangmang
+  - mkdir -p deploy
+  - mv wangmang.zip deploy/wangmang.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY #travis repo 설정
+    secret_access_key: $AWS_ACCESS_KEY
+    bucket: wangmang-build
+    region: ap-northeast-2
+    skip-cleanup: true
+    acl: private # zip 파일 접근 private
+    local_dri: deploy # befor_deploy에서 생성한 디렉토리
+    wait-until-deployed: true
+
+# CI 실행 완료시 메일로 알림
 notifications:
   email:
     recipients:
-      -  zem95@naver.com
+      - zem95@naver.com  
