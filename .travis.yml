@@ -18,7 +18,7 @@ script: "./gradlew clean build"
 before_deploy:
   - zip -r study-backend *
   - mkdir -p deploy
-  - mv wangmang.zip deploy/wangmang.zip
+  - mv study-backend.zip deploy/study-backend.zip
 
 deploy:
   - provider: s3
