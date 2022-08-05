@@ -30,7 +30,8 @@ deploy:
     acl: private # zip 파일 접근 private
     local_dri: deploy # befor_deploy에서 생성한 디렉토리
     wait-until-deployed: true
-    on: all_branches: true
+    on:
+      all_branches: true
 # CI 실행 완료시 메일로 알림
 notifications:
   email:
