@@ -16,7 +16,7 @@ script: "./gradlew clean build"
 
 
 before_deploy:
-  - zip -r study-backend study-backend
+  - zip -r study-backend *
   - mkdir -p deploy
   - mv wangmang.zip deploy/wangmang.zip
 
