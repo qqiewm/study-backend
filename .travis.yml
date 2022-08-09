@@ -28,14 +28,23 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY #travis repo 설정
     secret_access_key: $AWS_SECRET_KEY
     bucket: wangmang-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
+    on:
+    all_branches: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: wangmang-build
     key: study-backend.zip #빌드 파일 압축후 전달
     bundle_type: zip
     application: study-backend
     deployment_group: study-backend-group
     region: ap-northeast-2
-    skip-cleanup: true
-    acl: private # zip 파일 접근 private
-    local_dri: deploy # befor_deploy에서 생성한 디렉토리
     wait-until-deployed: true
     on:
       all_branches: true
