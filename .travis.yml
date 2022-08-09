@@ -16,6 +16,9 @@ script: "./gradlew clean build"
 
 
 before_deploy:
+  - mkdir -p before-deploy
+  - pwd
+  - ls -al 
   - zip -r study-backend *
   - mkdir -p deploy
   - mv study-backend.zip deploy/study-backend.zip
