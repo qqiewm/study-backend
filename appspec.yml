@@ -4,3 +4,5 @@ files:
   - source: /
     destination: /home/ec-2user/app/step2/zip/
     overwrite: yes
+
+#깃푸시
