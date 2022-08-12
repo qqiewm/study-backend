@@ -16,12 +16,14 @@ script: "./gradlew clean build"
 
 
 before_deploy:
-  - pwd
-  - ls -al 
-  - zip -r study-backend *
-  - mkdir -p deploy
-  - ls -al   
-  - mv study-backend.zip deploy/study-backend.zip
+  - mkdir -p before-deploy
+  - cp scripts/*.sh before-deploy/
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cd before-deploy && zip -r before-deploy *
+  - cd ../ && mkdir -p deploy
+  - mv before-deploy/before-deploy.zip deploy/study-backend.zip
+  
 
 deploy:
   - provider: s3
